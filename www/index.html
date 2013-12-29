@@ -22,22 +22,73 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <link rel="stylesheet" type="text/css" href="css/choose_blog.css" />
+        <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+        <title>Ghost</title>
+        <style>
+            *{margin:0;padding:0}
+            html, body {height:100%;width:100%;overflow:auto}
+            table {height:100%;width:100%;table-layout:static;border-collapse:collapse}
+            iframe {height:100%;width:100%;display:block;}
+
+            .header {border-bottom:1px solid #000}
+            .content {height:100%}
+            #main {height: 10%; top: 1px;}
+        </style>
+        <script type="text/javascript">
+            function checkLogOut(target) {
+              if (target.indexOf("signin") !== -1) {
+                if (target.indexOf("chosenblog=true") == -1) {
+                  $('#frame')[0].contentWindow.location.href = "choose_blog.html";
+                }
+                else {
+                  document.getElementById("main").style.display="inline";
+                  document.getElementById("notifications").style.visibility="visible";
+                }
+              }
+              else {
+                document.getElementById("main").style.display="none";
+                document.getElementById("notifications").style.visibility="hidden";
+              }
+            }
+        </script>
     </head>
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
+        <main role="main" id="main" style="display: none">
+            <aside id="notifications" style="visibility: hidden;">
+                <div class="js-bb-notification" style="display: block; height: auto;">
+                    <section class="notification-info notification-passive js-notification">
+                      Not your blog? Close me to find another one
+                        <a class="close" href="#"><span class="hidden">Close</span></a>
+                    </section>
+                </div>
+            </aside>
+        </main>
+        <iframe id="frame" src="choose_blog.html" frameborder="0" onload="checkLogOut(this.contentWindow.location.href);" >
+        </iframe>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
+            document.addEventListener("pause", onPause, false);
+
+            // Make sure that the X closes the error notification
+            $('.close').click(function(){
+              $('#frame')[0].contentWindow.location.href = "choose_blog.html";
+            });
+            function onPause() {
+              window.localStorage.setItem("laststate", $('#frame')[0].contentWindow.location.href);
+            }
+            var statejson = window.localStorage.getItem("laststate");
+              if (statejson) {
+                  try {
+                    $('#frame')[0].contentWindow.location.href = statejson;
+                  } catch (e) {
+                    // The url could not be parsed...
+                  }
+              }
         </script>
     </body>
 </html>
