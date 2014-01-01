@@ -3,6 +3,8 @@ Ghost-app
 
 This is the code for an admin app for your [Ghost blog](http://ghost.org).
 
+![Screenshots](https://raw.github.com/Litterfeldt/Ghost-app/master/screenshots/android/collage.jpg)
+
 What does it bring to the table?
 -------------
 At the moment it's not more than just an interface to the admin-website but brings some nice features. The most prominent one is the no-clutter-interface as it does not show any web-browser related graphics. Also it's fast, really fast.
