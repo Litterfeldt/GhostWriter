@@ -1,4 +1,4 @@
-Ghost-app
+AGhast
 =========
 
 This is the code for an admin app for your [Ghost blog](http://ghost.org).
