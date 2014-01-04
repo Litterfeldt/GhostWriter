@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.litterfeldt.ghost" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Ghost</name>
+    <name>AGhast</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Ghost.org blog admin app, private or hosted.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="kalle.litterfeldt@gmail.com" href="https://github.com/Litterfeldt/AGhast">
+        Karl Litterfeldt
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
