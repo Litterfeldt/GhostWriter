@@ -13,28 +13,9 @@
         <script type="text/javascript" src="js/jquery.cookie.js"></script>
 
         <script type="text/javascript">
-            function isURLReal(fullyQualifiedURL) {
-              var URL = encodeURIComponent(fullyQualifiedURL),
-                dfd = $.Deferred(),
-                checkURLPromise = $.getJSON('http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22' + URL + '%22&format=json');
-                checkURLPromise
-                  .done(function(response) {
-                    // results should be null if the page 404s or the domain doesn't work
-                    if (response.query.results) {
-                      dfd.resolve(true);
-                    } else {
-                      dfd.reject(false);
-                    }
-                  })
-                  .fail(function() {
-                    dfd.reject('failed');
-                  });
-                return dfd.promise();
-            }
-
             function check_blog_url(url) {
-              isURLReal('http://'+url+'/ghost')
-                .done(function(result) {
+              $.get('http://www.corsproxy.com/'+url+'/ghost/signin/')
+                .success(function(result) {
                   $.cookie('blog_adress', url);
                   window.location = "http://"+url+"/ghost/signin?chosenblog=true";
                 })
