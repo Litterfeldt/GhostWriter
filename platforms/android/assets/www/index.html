@@ -39,13 +39,13 @@
         </style>
         <script type="text/javascript">
             function checkLogOut(target) {
-              if (target.indexOf("signin") !== -1) {
-                if (target.indexOf("chosenblog=true") == -1) {
+              if (target.indexOf("signin/") !== -1) {
+                if (window.localStorage.getItem("chosen_blog") === false) {
                   $('#frame')[0].contentWindow.location.href = "choose_blog.html";
                 }
                 else {
-                  document.getElementById("main").style.display="inline";
-                  document.getElementById("notifications").style.visibility="visible";
+                  //document.getElementById("main").style.display="inline";
+                  //document.getElementById("notifications").style.visibility="visible";
                 }
               }
               else {
@@ -86,8 +86,10 @@
                   try {
                     $('#frame')[0].contentWindow.location.href = statejson;
                   } catch (e) {
-                    // The url could not be parsed...
+                    window.localStorage.setItem("chosen_blog", false);
                   }
+              } else {
+                window.localStorage.setItem("chosen_blog", false);
               }
         </script>
     </body>

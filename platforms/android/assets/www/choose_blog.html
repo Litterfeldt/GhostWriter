@@ -17,7 +17,9 @@
               $.get('http://www.corsproxy.com/'+url+'/ghost/signin/')
                 .success(function(result) {
                   $.cookie('blog_adress', url);
-                  window.location = "http://"+url+"/ghost/signin?chosenblog=true";
+                  window.location = "http://"+url+"/ghost/signin";
+                  window.localStorage.setItem("chosen_blog", true);
+
                 })
                 .fail(function(result) {
                   document.getElementById("notifications").style.visibility="visible";
@@ -47,7 +49,9 @@
         <script>
             // Override the default submit functionality in favour of custom code
             $('#login').submit(function() {
-              check_blog_url(document.getElementById('url').value);
+                if (document.getElementById('url').value != '') {
+                    check_blog_url(document.getElementById('url').value);
+                }
               return false;
             });
             // Make sure that the X closes the error notification
