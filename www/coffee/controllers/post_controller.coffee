@@ -194,6 +194,19 @@ angular.module('ghostwriter.postController', [])
         console.log(error)
     )
 
+  $scope.changeTitle = ->
+    titlePopup = $ionicPopup.show(
+      template: '<textarea rows="10" cols="50" type="text" ng-model="post.title"></textarea>',
+      scope: $scope,
+      buttons: [{
+        text: '<b>Done</b>',
+        type: 'button-positive',
+        onTap: (e) ->
+          if !$scope.post.title
+            e.preventDefault()
+      }]
+    )
+
   $scope.discard = ->
     confirmPopup = $ionicPopup.confirm(
       title: 'Discard post?'

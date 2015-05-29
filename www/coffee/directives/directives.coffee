@@ -23,3 +23,14 @@ angular.module('ghostwriter.directives', [])
               window.open(encodeURI(url), '_system')
           )
 )
+.directive('textarea', () ->
+  restrict: 'E',
+  scope: {
+    'noIonic': '='
+  },
+  link: (scope, element, attr) ->
+    if scope.noIonic
+      element.bind('touchend  touchmove touchstart', (e) ->
+        e.stopPropagation()
+      )
+)

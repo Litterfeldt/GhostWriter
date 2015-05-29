@@ -1,9 +1,9 @@
 <ion-view cache-view='false' view-title="Post" hide-nav-bar="true">
   <div class="ionic">
-    <div class="bar bar-header bar-deep-purple expanded ">
+    <div class="bar bar-header bar-deep-purple expanded hide-on-keyboard-open">
       <button class="button button-icon icon ion-android-arrow-back flat" ng-click="discard()" ></button>
       <button class="button button-icon icon ion-android-close flat pull-right" ng-click="discard()"></button>
-      <input class="post title" type="text" ng-model="post.title">
+      <h2 class="post title" ng-click="changeTitle()">{{post.title}}</h2>
     </div>
     <button ng-click="save()" class="button button-fab button-fab-bottom-right button-balanced icon ion-android-done bottom-right"></button>
     <ion-content class="content header-expanded">

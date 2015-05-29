@@ -340,6 +340,24 @@ angular.module('ghostwriter.postController', []).controller('PostCtrl', function
       return console.log(error);
     });
   };
+  $scope.changeTitle = function() {
+    var titlePopup;
+    return titlePopup = $ionicPopup.show({
+      template: '<textarea rows="10" cols="50" type="text" ng-model="post.title"></textarea>',
+      scope: $scope,
+      buttons: [
+        {
+          text: '<b>Done</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+            if (!$scope.post.title) {
+              return e.preventDefault();
+            }
+          }
+        }
+      ]
+    });
+  };
   $scope.discard = function() {
     var confirmPopup;
     confirmPopup = $ionicPopup.confirm({
@@ -505,6 +523,55 @@ angular.module('ghostwriter.postsController', []).controller('PostsCtrl', functi
   return $scope.refreshPosts();
 });
 
+angular.module('ghostwriter.directives', []).directive('elastic', function($timeout) {
+  return {
+    restrict: 'A',
+    link: function($scope, element) {
+      var resize;
+      resize = function() {
+        return element[0].style.height = "" + element[0].scrollHeight + "px";
+      };
+      element.on("blur keyup change focus native.keyboardshow", resize);
+      return $timeout(resize, 1000);
+    }
+  };
+}).directive('a', function() {
+  return {
+    restrict: 'E',
+    link: function(scope, element, attrs) {
+      var externalRe, url;
+      if (!attrs.href) {
+        return;
+      }
+      externalRe = new RegExp("^(http|https)://");
+      url = attrs.href;
+      if (externalRe.test(url)) {
+        return element.on('click', function(e) {
+          e.preventDefault();
+          if (attrs.ngClick) {
+            scope.$eval(attrs.ngClick);
+          }
+          return window.open(encodeURI(url), '_system');
+        });
+      }
+    }
+  };
+}).directive('textarea', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      'noIonic': '='
+    },
+    link: function(scope, element, attr) {
+      if (scope.noIonic) {
+        return element.bind('touchend  touchmove touchstart', function(e) {
+          return e.stopPropagation();
+        });
+      }
+    }
+  };
+});
+
 angular.module('ghostwriter.ghostApiFactory', []).factory('$localstorage', function($window) {
   return {
     get: function(key, defaultValue) {
@@ -628,41 +695,6 @@ angular.module('ghostwriter.localstorageFactory', []).factory('$localstorage', f
     },
     getObject: function(key) {
       return JSON.parse($window.localStorage[key] || '{}');
-    }
-  };
-});
-
-angular.module('ghostwriter.directives', []).directive('elastic', function($timeout) {
-  return {
-    restrict: 'A',
-    link: function($scope, element) {
-      var resize;
-      resize = function() {
-        return element[0].style.height = "" + element[0].scrollHeight + "px";
-      };
-      element.on("blur keyup change focus native.keyboardshow", resize);
-      return $timeout(resize, 1000);
-    }
-  };
-}).directive('a', function() {
-  return {
-    restrict: 'E',
-    link: function(scope, element, attrs) {
-      var externalRe, url;
-      if (!attrs.href) {
-        return;
-      }
-      externalRe = new RegExp("^(http|https)://");
-      url = attrs.href;
-      if (externalRe.test(url)) {
-        return element.on('click', function(e) {
-          e.preventDefault();
-          if (attrs.ngClick) {
-            scope.$eval(attrs.ngClick);
-          }
-          return window.open(encodeURI(url), '_system');
-        });
-      }
     }
   };
 });
