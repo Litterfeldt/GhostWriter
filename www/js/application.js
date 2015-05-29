@@ -505,42 +505,6 @@ angular.module('ghostwriter.postsController', []).controller('PostsCtrl', functi
   return $scope.refreshPosts();
 });
 
-angular.module('ghostwriter.directives', []).directive('elastic', function($timeout) {
-  return {
-    restrict: 'A',
-    link: function($scope, element) {
-      var resize;
-      resize = function() {
-        return element[0].style.height = "" + element[0].scrollHeight + "px";
-      };
-      element.on("blur keyup change focus native.keyboardshow", resize);
-      return $timeout(resize, 1000);
-    }
-  };
-}).directive('a', function() {
-  return {
-    restrict: 'E',
-    link: function(scope, element, attrs) {
-      var externalRe, url;
-      if (!attrs.href) {
-        return;
-      }
-      externalRe = new RegExp("^(http|https)://");
-      url = attrs.href;
-      if (externalRe.test(url)) {
-        return element.on('click', function(e) {
-          e.preventDefault();
-          if (attrs.ngClick) {
-            console.log("hellooooO");
-            scope.$eval(attrs.ngClick);
-          }
-          return window.open(encodeURI(url), '_system');
-        });
-      }
-    }
-  };
-});
-
 angular.module('ghostwriter.ghostApiFactory', []).factory('$localstorage', function($window) {
   return {
     get: function(key, defaultValue) {
@@ -664,6 +628,41 @@ angular.module('ghostwriter.localstorageFactory', []).factory('$localstorage', f
     },
     getObject: function(key) {
       return JSON.parse($window.localStorage[key] || '{}');
+    }
+  };
+});
+
+angular.module('ghostwriter.directives', []).directive('elastic', function($timeout) {
+  return {
+    restrict: 'A',
+    link: function($scope, element) {
+      var resize;
+      resize = function() {
+        return element[0].style.height = "" + element[0].scrollHeight + "px";
+      };
+      element.on("blur keyup change focus native.keyboardshow", resize);
+      return $timeout(resize, 1000);
+    }
+  };
+}).directive('a', function() {
+  return {
+    restrict: 'E',
+    link: function(scope, element, attrs) {
+      var externalRe, url;
+      if (!attrs.href) {
+        return;
+      }
+      externalRe = new RegExp("^(http|https)://");
+      url = attrs.href;
+      if (externalRe.test(url)) {
+        return element.on('click', function(e) {
+          e.preventDefault();
+          if (attrs.ngClick) {
+            scope.$eval(attrs.ngClick);
+          }
+          return window.open(encodeURI(url), '_system');
+        });
+      }
     }
   };
 });

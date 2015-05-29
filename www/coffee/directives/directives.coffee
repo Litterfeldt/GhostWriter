@@ -19,7 +19,6 @@ angular.module('ghostwriter.directives', [])
           element.on('click', (e) ->
               e.preventDefault()
               if attrs.ngClick
-                  console.log("hellooooO")
                   scope.$eval(attrs.ngClick)
               window.open(encodeURI(url), '_system')
           )
