@@ -1,0 +1,39 @@
+<ion-view cache-view='false' view-title="Posts" hide-nav-bar="true" >
+  <div class="ionic">
+    <div class="bar bar-header bar-deep-purple">
+      <button class="button button-icon icon ion-android-sync flat" ng-click="refreshPosts()" ></button>
+      <button class="button button-icon icon ion-android-more-vertical flat pull-right" ng-click="popover.show($event)"></button>
+      <h1 class="title fab-left">Blog posts</h1>
+    </div>
+    <div class="button-fab-bottom-right bottom-right" >
+      <div class="animate-bottom-right-button" ></div>
+      <button ng-click="newPost()" class="button add-button button-fab  button-royal icon ion-android-create"></button>
+    </div>
+    <ion-content class="content top-margin bottom-margin">
+      <ion-refresher on-refresh="refreshPosts()"></ion-refresher>
+      <div class="list animate-fade-slide-in-right">
+        <div ng-repeat="post in posts" ng-click="goToPost(post.id)" class="card in done" style="-webkit-transition-delay: 0.1s; transition-delay: 0.1s;">
+        <div class="item item-text-wrap stable-bg post">
+          <strong>{{post.title}}</strong> {{post.html | htmlToPlaintext | limitTo : 70}}{{post.html.length > 70 ? '...' : ''}}
+          <div class="image" ng-if="getImageFrom(post.html)">
+              <img ng-src="{{getImageFrom(post.html)}}">
+            </div>
+          <div class="card-footer text-right">
+              <span ng-if="post.status == 'published'">
+                <i class="icon ion-android-checkmark-circle balanced"></i> published
+              </span>
+              <span ng-if="post.status == 'draft'">
+                <i class="icon ion-compose assertive"></i> draft
+              </span>
+              <div class="pull-left">
+                <i class="icon ion-clock"></i> {{post.updated_at | date}}
+              </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <ion-infinite-scroll on-infinite="morePosts()" distance="25%" ng-if="nextPage() > 0">
+      </ion-infinite-scroll>
+    </ion-content>
+  </div>
+</ion-view>

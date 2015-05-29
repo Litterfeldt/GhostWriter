@@ -1,0 +1,18 @@
+<ion-popover-view style="height:150px">
+  <ion-content>
+    <div class="list">
+      <a class="item" style="padding:20px" ng-click="popover.hide(); save()">
+        Save
+      </a>
+      <a class="item" style="padding:20px" ng-click="popover.hide(); publish()" ng-show="post.status == 'draft'">
+        Publish
+      </a>
+      <a class="item" style="padding:20px" ng-click="popover.hide(); unpublish()" ng-show="post.status == 'published'">
+        Unpublish
+      </a>
+      <a class="item" style="padding:20px" ng-click="popover.hide(); delete()">
+        Delete
+      </a>
+    </div>
+  </ion-content>
+</ion-popover-view>

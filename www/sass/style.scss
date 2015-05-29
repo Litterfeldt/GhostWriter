@@ -1,0 +1,161 @@
+a {
+  color: blue;
+  height: 25px;
+}
+
+.padded {
+  padding-top: 25px;
+  background-color: #673AB7;
+}
+
+.bar.bar-deep-purple {
+  border-color: #673AB7;
+  background-color: #673AB7;
+  background-image: linear-gradient(0deg, #673AB7, #673AB7 50%, transparent 50%);
+  color: #000;
+  .title {
+    color: white;
+  }
+}
+
+.card img{
+  max-width: 100% !important;
+  box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.26);
+  display: block;
+}
+
+.card .image {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.top-margin {
+  margin-top: 25px;
+}
+
+.bottom-margin {
+  margin-bottom: 25px;
+}
+
+.bottom-right {
+  top: auto !important;
+  right: 16px!important;
+  bottom: 41px!important;
+  left: auto !important;
+  position: absolute!important;
+}
+
+.bar {
+  box-shadow: 0 0px 5px 0 rgba(0,0,0,.26) !important;
+}
+
+.ionic.login {
+  padding-top: 25px;
+}
+
+.title.ng-binding {
+  margin-top: 25px;
+}
+
+.bar.bar-header.bar-assertive {
+  height: 69px;
+}
+.post.editor {
+  width: 80%;
+  margin-left: 10%;
+  min-height: 500px;
+}
+
+.post.title {
+  resize: none;
+  // position: absolute !important;
+  left: 0 !important;
+  margin-top: 45px !important;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 90% !important;
+  background-color: rgba(255, 255, 255, 0);
+}
+.bar.bar-header.expanded {
+  height: 100px !important;
+}
+
+.keyboard-open .content.header-expanded {
+  top: 35px !important;
+}
+
+.content.header-expanded {
+  top: 120px !important;
+}
+
+// Posts screen
+.animate-bottom-right-button {
+  position: fixed !important;
+  z-index: 19;
+  box-shadow: 0 0 15px 0 #6b46e5;
+  border-radius: 50%;
+  width: 66px;
+  height: 66px;
+  right: 11px !important;
+  bottom: 36px !important;
+  -webkit-animation: pulsate 2s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  top: auto !important;
+  left: auto !important;
+}
+
+// Preview screen
+.preview.post.title {
+  resize: none;
+  margin-top: 0px !important;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+// Login Screen
+.ionic .hero .hero-icon {
+  position: relative;
+}
+.ionic .hero .hero-icon::after {
+  content: "";
+  width: 150px;
+  position: absolute;
+  top:0;
+  right:0;
+  z-index: -10;
+  margin-left: auto;
+  margin-right:auto;
+  box-shadow: 0 0 15px 0 rgba(0,0,0,.26);
+  border-radius: 50%;
+  display: inline-block;
+  height: 150px;
+  padding: 10px 30px;
+  line-height: 136px;
+  -webkit-animation: pulsate 2s ease-out;
+  -webkit-animation-iteration-count: infinite;
+}
+.button-bar {
+  .button.button-positive.button-outline {
+    margin-left: 5px;
+    background: #387ef5;
+    color: #fff;
+  }
+  .button::before{
+    -webkit-animation: pulsate 1.5s ease-out;
+    -webkit-animation-iteration-count: infinite;
+  }
+  .button.button-assertive.button-outline {
+    margin-right: 5px;
+    background: #ef473a;
+    color: #fff;
+  }
+}
+
+
+// Animations
+
+@-webkit-keyframes pulsate {
+    0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+    50% {opacity: 1.0;}
+    100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+}

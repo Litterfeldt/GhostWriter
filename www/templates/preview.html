@@ -1,0 +1,12 @@
+<ion-view cache-view='false' view-title="Preview" hide-nav-bar="true" >
+    <div class="bar bar-header bar-deep-purple ">
+      <button class="button button-icon icon ion-android-arrow-back flat" ng-click="back()" ></button>
+      <h2 class="preview post title" >{{post.title}}</h2>
+    </div>
+  <ion-content class="has-header">
+  <div class="card">
+    <link rel="stylesheet" type="text/css" href="{{auth.blog_url}}/assets/css/screen.css">
+    <div class="item item-text-wrap" ng-bind-html="post.html"></div>
+  </div>
+  </ion-content>
+</ion-view>

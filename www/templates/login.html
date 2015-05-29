@@ -1,0 +1,43 @@
+<ion-view cache-view='false' hide-nav-bar="true">
+<div class="ionic login " style="background-image: url('img/mountains.jpg'); padding-bottom: 20%; padding-top:50px">
+    <div class="hero no-header flat hide-on-keyboard-open">
+        <div class="content">
+          <i class="ion-ios-paper icon hero-icon royal-bg hide-on-keyboard-open">
+          </i>
+            <h1>Ghostwriter</h1>
+        </div>
+    </div>
+        <form ng-submit="doLogin()">
+        <div class="list" style="padding-top: 0px; margin-bottom: 0px">
+      <div class="list-inset" style="margin: 0px 10px 0px 10px">
+        <label class="item item-input" >
+          <i class="input-label icon ion-earth" style="width:10%"></i>
+          <input type="text" placeholder="Blog address" ng-model="loginData.blog_url">
+        </label>
+        <label class="item item-input">
+          <i class="input-label icon ion-person" style="width:10%"></i>
+          <input type="text" placeholder="Email address" ng-model="loginData.username">
+        </label>
+        <label class="item item-input">
+          <i class="input-label icon ion-locked" style="width:10%"></i>
+          <input type="password" placeholder="Password" ng-model="loginData.password">
+        </label>
+      </div>
+        </div>
+        <div class="padding">
+            <button class="button button-block button-positive waves-effect waves-button waves-light" type='submit'>Login</button>
+        </div>
+        </form>
+        <div class="button-bar">
+            <button class="button button-small button-outline button-assertive light-bg icon-left ion-social-google waves-effect waves-button waves-light">
+              Google+
+            </button>
+            <button class="button button-small button-outline button-positive light-bg icon-left ion-social-facebook waves-effect waves-button waves-light">
+              Facebook
+            </button>
+        </div>
+    </div>
+  <div class="bar bar-header bar-assertive" ng-show="error">
+    <div class="title" ng-bind-html="error"></div>
+  </div>
+</ion-view>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ionic-material/dist/material-ionic.min.css" rel="stylesheet">
+    <link href="lib/ionic-material/preview/css/device.css" rel="stylesheet">
+    <link href="lib/ionic-material/preview/css/preview.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/application.js"></script>
+    <script src="js/waves.min.js"></script>
+    <script src="js/custom-wave.js"></script>
+    <script src="js/material-ionic.js"></script>
+  </head>
+
+  <body ng-app="ghostwriter">
+    <div class="padded" ng-show='!removeTopPadding'></div>
+    <ion-nav-view class="bar-positive">
+    </ion-nav-view>
+  </body>
+</html>
