@@ -153,8 +153,9 @@ angular.module('ghostwriter.postController', []).controller('PostCtrl', function
   $scope.changeTitle = function() {
     var titlePopup;
     return titlePopup = $ionicPopup.show({
-      template: '<textarea rows="10" cols="50" type="text" ng-model="post.title"></textarea>',
+      template: '<textarea rows="4" cols="50" type="text" ng-model="post.title"></textarea>',
       scope: $scope,
+      cssClass: 'change-title-popup',
       buttons: [
         {
           text: '<b>Done</b>',
@@ -343,8 +344,9 @@ angular.module('ghostwriter.postController', []).controller('PostCtrl', function
   $scope.changeTitle = function() {
     var titlePopup;
     return titlePopup = $ionicPopup.show({
-      template: '<textarea rows="10" cols="50" type="text" ng-model="post.title"></textarea>',
+      template: '<textarea rows="4" cols="50" type="text" ng-model="post.title"></textarea>',
       scope: $scope,
+      cssClass: 'change-title-popup',
       buttons: [
         {
           text: '<b>Done</b>',

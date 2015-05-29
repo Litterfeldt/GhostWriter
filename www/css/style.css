@@ -49,6 +49,12 @@ a {
 .bar.bar-header.bar-assertive {
   height: 69px; }
 
+.change-title-popup .popup {
+  margin-top: -20%; }
+
+.change-title-popup .popup-head {
+  display: none; }
+
 .post.editor {
   width: 80%;
   margin-left: 10%;

@@ -18,8 +18,9 @@ angular.module('ghostwriter.postController', [])
     )
   $scope.changeTitle = ->
     titlePopup = $ionicPopup.show(
-      template: '<textarea rows="10" cols="50" type="text" ng-model="post.title"></textarea>',
+      template: '<textarea rows="4" cols="50" type="text" ng-model="post.title"></textarea>',
       scope: $scope,
+      cssClass:'change-title-popup'
       buttons: [{
         text: '<b>Done</b>',
         type: 'button-positive',
@@ -196,8 +197,9 @@ angular.module('ghostwriter.postController', [])
 
   $scope.changeTitle = ->
     titlePopup = $ionicPopup.show(
-      template: '<textarea rows="10" cols="50" type="text" ng-model="post.title"></textarea>',
+      template: '<textarea rows="4" cols="50" type="text" ng-model="post.title"></textarea>',
       scope: $scope,
+      cssClass:'change-title-popup'
       buttons: [{
         text: '<b>Done</b>',
         type: 'button-positive',
